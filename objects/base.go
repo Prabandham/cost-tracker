@@ -15,9 +15,5 @@ type Base struct {
 }
 
 func (base *Base) BeforeCreate(scope *gorm.Scope) error {
-	uuid, err := uuid.NewV4()
-	if err != nil {
-		return err
-	}
-	return scope.SetColumn("ID", uuid)
+	return scope.SetColumn("ID", uuid.NewV4())
 }

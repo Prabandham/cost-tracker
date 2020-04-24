@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 
 	"github.com/Prabandham/cost-tracker/db"
 	"github.com/Prabandham/cost-tracker/endpoints"
@@ -13,6 +14,7 @@ func main() {
 	db.MigrateModels()
 
 	server := gin.Default()
+	server.Use(cors.Default())
 
 	loadRoutes(server, db)
 

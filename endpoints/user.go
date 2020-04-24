@@ -1,12 +1,10 @@
 package endpoints
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
-
 	. "github.com/Prabandham/cost-tracker/objects"
 )
 
@@ -26,8 +24,7 @@ type ValidateSessionHeader struct {
 func (e Endpoints) RegisterUser(c *gin.Context) {
 	user := User{}
 	if err := c.ShouldBindJSON(&user); err != nil {
-		fmt.Println(err.Error())
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"error": FormatErrors(err)})
 		return
 	}
 
@@ -41,7 +38,7 @@ func (e Endpoints) FindUserByEmail(c *gin.Context) {
 	findUser := FindUserParams{}
 	user := User{}
 	if err := c.ShouldBindQuery(&findUser); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"error": FormatErrors(err)})
 		return
 	}
 
@@ -58,18 +55,18 @@ func (e Endpoints) Login(c *gin.Context) {
 	loginParams := LoginUserParams{}
 	user := User{}
 	if err := c.ShouldBindJSON(&loginParams); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"error": FormatErrors(err)})
 		return
 	}
 
 	e.Connection.Where(&User{Email: loginParams.Email}).First(&user)
 	if user.Email == "" {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Invalid Credentials"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid Credentials"})
 		return
 	}
 
 	if loginErr := user.CheckPassword(loginParams.Password); loginErr != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Invalid Credentials"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid Credentials"})
 		return
 	}
 	token, _ := user.GenerateJwtToken()
