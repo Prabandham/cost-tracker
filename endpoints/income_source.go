@@ -9,16 +9,9 @@ import (
 )
 
 func (e Endpoints) ListIncomeSources(c *gin.Context) {
-    userParams := UserParams{}
     user := User{}
     incomeSources := []IncomeSource{}
-
-    if err := c.ShouldBindUri(&userParams); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": FormatErrors(err)})
-        return
-    }
-
-    uid, _ := uuid.FromString(userParams.UserId)
-	e.Connection.Where("id = ?", uid).First(&user).Related(&incomeSources)
+    uid, _ := uuid.FromString(c.Param("user_id"))
+	e.Connection.Where("id = ?", uid).Find(&incomeSources)
 	c.JSON(http.StatusOK, incomeSources)
 }

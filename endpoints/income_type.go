@@ -8,13 +8,8 @@ import (
     "github.com/satori/go.uuid"
 )
 
-type UserParams struct {
-	UserId string `uri:user_id binding:"required,uuid"`
-}
-
 type IncomeTypeParams struct {
     Name string `json:name binding:"required"`
-	UserId string `json:user_id binding:"required,uuid"`
 }
 
 func (e Endpoints) ListIncomeTypes(c *gin.Context) {
