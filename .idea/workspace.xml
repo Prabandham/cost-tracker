@@ -6,8 +6,10 @@
       <change afterPath="$PROJECT_DIR$/ui/src/components/ConfigComponent.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ui/src/components/ExpenseComponent.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ui/src/components/IncomeComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/cost-tracker" beforeDir="false" afterPath="$PROJECT_DIR$/bin/cost-tracker" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/endpoints/income_source.go" beforeDir="false" afterPath="$PROJECT_DIR$/endpoints/income_source.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/endpoints/income_type.go" beforeDir="false" afterPath="$PROJECT_DIR$/endpoints/income_type.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/income_type.go" beforeDir="false" afterPath="$PROJECT_DIR$/objects/income_type.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/ApiConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/ApiConstants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/App.js" afterDir="false" />
@@ -22,7 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/ui" />
   </component>
   <component name="ProjectId" id="1azAfI6H44F8soS7rShgJEMwX5M" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -65,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1587728149636</updated>
       <workItem from="1587728151883" duration="3457000" />
-      <workItem from="1587735662848" duration="50925000" />
+      <workItem from="1587735662848" duration="51538000" />
     </task>
     <servers />
   </component>

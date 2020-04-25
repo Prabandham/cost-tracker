@@ -5,7 +5,7 @@ import (
 )
 
 // IncomeType can be defined by each user
-// Ex Professional, Personal, HouseRent, Hobbie, ParttimeWork, Investment Returns, etc
+// Ex Professional, Personal, HouseRent, Hobby, Part-Time-Work, Investment Returns, etc
 type IncomeType struct {
 	Base
 	Name   string `sql:"index" json:"name" gorm:"unique;not null"`

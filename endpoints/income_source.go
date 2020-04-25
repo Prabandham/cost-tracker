@@ -9,7 +9,6 @@ import (
 )
 
 func (e Endpoints) ListIncomeSources(c *gin.Context) {
-    user := User{}
     incomeSources := []IncomeSource{}
     uid, _ := uuid.FromString(c.Param("user_id"))
 	e.Connection.Where("id = ?", uid).Find(&incomeSources)
