@@ -2,9 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e280490f-84e3-4767-9b24-85489fc05a84" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/auth_middleware.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/endpoints/income_source.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/AnalyticsComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/ConfigComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/ExpenseComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/IncomeComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/cost-tracker" beforeDir="false" afterPath="$PROJECT_DIR$/bin/cost-tracker" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/endpoints/base.go" beforeDir="false" afterPath="$PROJECT_DIR$/endpoints/base.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/endpoints/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/endpoints/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/income_type.go" beforeDir="false" afterPath="$PROJECT_DIR$/objects/income_type.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/ApiConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/ApiConstants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/containers/DashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/containers/DashboardContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/containers/LoginPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/containers/LoginPageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/utils/Cookies.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/utils/Cookies.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1587728149636</updated>
       <workItem from="1587728151883" duration="3457000" />
-      <workItem from="1587735662848" duration="24350000" />
+      <workItem from="1587735662848" duration="50649000" />
     </task>
     <servers />
   </component>
@@ -63,9 +81,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="505" y="237" width="670" height="676" key="search.everywhere.popup" timestamp="1587744494801">
+    <state x="501" y="255" width="678" height="508" key="find.popup" timestamp="1587840012280">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state x="505" y="237" width="670" height="676" key="search.everywhere.popup/0.23.1680.972@0.23.1680.972" timestamp="1587744494801" />
+    <state x="501" y="255" width="678" height="508" key="find.popup/0.23.1680.972@0.23.1680.972" timestamp="1587840012280" />
+    <state x="505" y="237" width="670" height="676" key="search.everywhere.popup" timestamp="1587845875329">
+      <screen x="0" y="23" width="1680" height="972" />
+    </state>
+    <state x="505" y="237" width="670" height="676" key="search.everywhere.popup/0.23.1680.972@0.23.1680.972" timestamp="1587845875329" />
   </component>
 </project>

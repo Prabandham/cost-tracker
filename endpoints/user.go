@@ -1,11 +1,12 @@
 package endpoints
 
 import (
+"fmt"
 	"net/http"
 	"strings"
 
-	"github.com/gin-gonic/gin"
 	. "github.com/Prabandham/cost-tracker/objects"
+	"github.com/gin-gonic/gin"
 )
 
 type FindUserParams struct {
@@ -70,10 +71,11 @@ func (e Endpoints) Login(c *gin.Context) {
 		return
 	}
 	token, _ := user.GenerateJwtToken()
+	fmt.Println(token)
 	c.JSON(http.StatusOK, gin.H{
-        "authToken": token,
-        "userInfo": user,
-        "userId": user.ID,
+		"authToken": token,
+		"userInfo":  user,
+		"userId":    user.ID,
 	})
 }
 
