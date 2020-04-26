@@ -6,6 +6,8 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+// Income will hold all details pertaining to the income of a user.
+// This will be linked to which account the income is going to and what the source of the income was
 type Income struct {
 	Base
 	Amount         int       `sql:"index" json:"amount" gorm:"not null"`
