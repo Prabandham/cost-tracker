@@ -18,9 +18,9 @@ type User struct {
 	Password             string `json:"password" gorm:"-" binding:"required,min=8,max=16"`
 	PasswordConformation string `gorm:"-" json:"password_conformation" binding:"required,min=8,max=16,eqfield=Password"`
 	EncryptedPassword    string `json:"-"`
-	IncomeTypes          []IncomeType
 	IncomeSoruces        []IncomeSource
 	Incomes              []Income
+	Accounts             []Account
 }
 
 func (user *User) BeforeSave(scope *gorm.Scope) error {

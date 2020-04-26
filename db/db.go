@@ -47,12 +47,11 @@ func (db *Db) SetLogger() {
 // Pass list of model objects to this as sting and dynamically load the objects to migrate by doing a struct look up
 func (db *Db) MigrateModels() {
 	db.Connection.AutoMigrate(
+		&objects.Account{},
 		&objects.Expense{},
 		&objects.ExpenseType{},
 		&objects.Income{},
 		&objects.IncomeSource{},
-		&objects.IncomeType{},
-		&objects.IncomeType{},
 		&objects.User{},
 	)
 }
