@@ -1,7 +1,9 @@
 package endpoints
 
 import (
+	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	uuid "github.com/satori/go.uuid"
@@ -10,7 +12,10 @@ import (
 )
 
 type AccountParams struct {
-	Name string `json:"name" binding:"required"`
+	Name    string `json:"name" binding:"required"`
+	Address string `json:"address"`
+	Balance string `json:"balance" binding:"required"`
+	IFSC    string `json:"ifsc_code"`
 }
 
 func (e Endpoints) ListAccounts(c *gin.Context) {
@@ -25,11 +30,15 @@ func (e Endpoints) CreateAccount(c *gin.Context) {
 	account := Account{}
 	uuidParam := c.Param("user_id")
 	if err := c.ShouldBindJSON(&accountParams); err != nil {
+		fmt.Println(err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": FormatErrors(err)})
 		return
 	}
 	uid, _ := uuid.FromString(uuidParam)
 	account.Name = accountParams.Name
+	account.Address = accountParams.Address
+	account.Balance, _ = strconv.ParseInt(accountParams.Balance, 0, 64)
+	account.IFSC = accountParams.IFSC
 	account.UserID = uid
 	e.Connection.FirstOrCreate(&account, account)
 	c.JSON(http.StatusOK, account)
