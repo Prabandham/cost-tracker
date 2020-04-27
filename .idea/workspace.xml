@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e280490f-84e3-4767-9b24-85489fc05a84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/cost-tracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cost-tracker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/cost-tracker" beforeDir="false" afterPath="$PROJECT_DIR$/bin/cost-tracker" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/endpoints/income_source.go" beforeDir="false" afterPath="$PROJECT_DIR$/endpoints/income_source.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/endpoints/income_type.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/objects/expense.go" beforeDir="false" afterPath="$PROJECT_DIR$/objects/expense.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/objects/income.go" beforeDir="false" afterPath="$PROJECT_DIR$/objects/income.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/objects/income_source.go" beforeDir="false" afterPath="$PROJECT_DIR$/objects/income_source.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/objects/income_type.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/objects/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/objects/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ui/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/ApiConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/ApiConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/ConfigComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/ConfigComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/IncomeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/IncomeComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/containers/DashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/containers/DashboardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/containers/LandingPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/containers/LandingPageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/utils/AuthenticatedRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/utils/AuthenticatedRoute.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/ui" />
   </component>
   <component name="ProjectId" id="1azAfI6H44F8soS7rShgJEMwX5M" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -49,6 +34,18 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ui/public/images" />
     </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -71,6 +68,7 @@
       <workItem from="1587914653042" duration="21000" />
       <workItem from="1587914708090" duration="20000" />
       <workItem from="1587914736573" duration="44000" />
+      <workItem from="1587974723073" duration="10000" />
     </task>
     <servers />
   </component>

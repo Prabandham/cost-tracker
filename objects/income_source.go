@@ -8,7 +8,7 @@ import (
 // Ex Work, Rent, Hobby, Part-Time-Work, Investment Returns, etc
 type IncomeSource struct {
 	Base
-	Name   string    `sql:"index" json:"name" gorm:"unique;not null"`
+	Name   string    `sql:"index" json:"name" gorm:"not null"`
 	UserID uuid.UUID `sql:"index" gorm:"type:uuid"`
 	User   User
 }

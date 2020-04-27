@@ -8,9 +8,10 @@ import (
 
 // Income will hold all details pertaining to the income of a user.
 // This will be linked to which account the income is going to and what the source of the income was
+//
 type Income struct {
 	Base
-	Amount         int       `sql:"index" json:"amount" gorm:"not null"`
+	Amount         int64     `sql:"index" json:"amount" gorm:"not null"`
 	ReceivedOn     time.Time `json:"received_on"`
 	UserID         uuid.UUID `sql:"index"`
 	User           User
