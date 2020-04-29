@@ -3,7 +3,6 @@ package endpoints
 import (
 	"fmt"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	uuid "github.com/satori/go.uuid"
@@ -14,8 +13,8 @@ import (
 type AccountParams struct {
 	Name    string `json:"name" binding:"required"`
 	Address string `json:"address"`
-	Balance string `json:"balance" binding:"required"`
-	IFSC    string `json:"ifsc_code"`
+	Balance int64  `json:"balance" binding:"required,min=1"`
+	IFSC    string `json:"ifsc_code" binding:"required"`
 }
 
 func (e Endpoints) ListAccounts(c *gin.Context) {
@@ -37,7 +36,7 @@ func (e Endpoints) CreateAccount(c *gin.Context) {
 	uid, _ := uuid.FromString(uuidParam)
 	account.Name = accountParams.Name
 	account.Address = accountParams.Address
-	account.Balance, _ = strconv.ParseInt(accountParams.Balance, 0, 64)
+	account.Balance = accountParams.Balance
 	account.IFSC = accountParams.IFSC
 	account.UserID = uid
 	e.Connection.FirstOrCreate(&account, account)

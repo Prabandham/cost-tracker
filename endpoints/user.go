@@ -1,12 +1,13 @@
 package endpoints
 
 import (
-"fmt"
+	"fmt"
 	"net/http"
 	"strings"
 
-	. "github.com/Prabandham/cost-tracker/objects"
 	"github.com/gin-gonic/gin"
+
+	. "github.com/Prabandham/cost-tracker/objects"
 )
 
 type FindUserParams struct {

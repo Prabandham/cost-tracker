@@ -10,7 +10,7 @@ import (
 )
 
 type IncomeSourceParams struct {
-	Name string `json:name binding:"required"`
+	Name string `json:"name" binding:"required,min=3,max=25"`
 }
 
 func (e Endpoints) ListIncomeSources(c *gin.Context) {
