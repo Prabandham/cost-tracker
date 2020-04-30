@@ -2,7 +2,6 @@ package endpoints
 
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	uuid "github.com/satori/go.uuid"
@@ -12,7 +11,7 @@ import (
 
 type IncomeParams struct {
 	AccountId string `json:"account_id" binding:"required"`
-	Amount    string `json:"amount" binding:"required"`
+	Amount    int64  `json:"amount" binding:"required"`
 	// ReceivedOn     time.Time `json:"received_on" binding:"required"`
 	IncomeSourceId string `json:"income_source_id" binding:"required"`
 }
@@ -34,7 +33,7 @@ func (e Endpoints) CreateIncome(c *gin.Context) {
 	}
 	income.UserID = uid
 	income.AccountID, _ = uuid.FromString(incomeParams.AccountId)
-	income.Amount, _ = strconv.ParseInt(incomeParams.Amount, 0, 64)
+	income.Amount = incomeParams.Amount
 	income.IncomeSourceID, _ = uuid.FromString(incomeParams.IncomeSourceId)
 	e.Connection.FirstOrCreate(&income, income)
 	e.Connection.Where("ID = ?", income.ID).Preload("Account").Preload("IncomeSource").First(&income)

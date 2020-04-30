@@ -3,6 +3,7 @@ package objects
 import (
 	"time"
 
+	"github.com/jinzhu/gorm"
 	uuid "github.com/satori/go.uuid"
 )
 
@@ -18,4 +19,13 @@ type Expense struct {
 	ExpenseType   ExpenseType `gorm:"PRELOAD`
 	AccountID     uuid.UUID   `sql:"index"`
 	Account       Account     `gorm:"PRELOAD`
+}
+
+func (expense *Expense) BeforeCreate(scope *gorm.Scope) (err error) {
+	account := Account{}
+	db := scope.DB()
+	db.Where("id = ?", expense.AccountID).First(&account)
+	newBalance := account.Balance - expense.Amount
+	db.Model(Account{}).Where("id = ?", account.ID).Update("balance", newBalance)
+	return
 }

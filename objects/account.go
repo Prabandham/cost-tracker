@@ -11,3 +11,9 @@ type Account struct {
 	UserID  uuid.UUID `json:"user_id" binding:"required" gorm:"not null" sql:"index"`
 	User    User
 }
+
+// TODO setup account threshold. This basically is the overall threshold below which the amount should not go below at all. Irrespective of Month or year.
+
+// TODO setup account monthly threshold. This basically is the overall threshold for the current month.
+
+// TODO setup validation that balance cannot go below negative for a given account
