@@ -10,7 +10,7 @@ import (
 // Expense is the actual expense incured by the person, which papps to the ExpenseType
 type Expense struct {
 	Base
-	Amount        int64       `json:"amount" gorm:"not null"`
+	Amount        float64     `json:"amount" gorm:"not null"`
 	SpentOn       time.Time   `json:"received_on"`
 	Description   string      `gorm:"size: 255"`
 	UserID        uuid.UUID   `sql:"index" gorm:"not null`

@@ -10,8 +10,8 @@ import (
 )
 
 type IncomeParams struct {
-	AccountId string `json:"account_id" binding:"required"`
-	Amount    int64  `json:"amount" binding:"required"`
+	AccountId string  `json:"account_id" binding:"required"`
+	Amount    float64 `json:"amount" binding:"required"`
 	// ReceivedOn     time.Time `json:"received_on" binding:"required"`
 	IncomeSourceId string `json:"income_source_id" binding:"required"`
 }

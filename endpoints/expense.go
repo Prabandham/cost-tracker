@@ -10,10 +10,10 @@ import (
 )
 
 type ExpenseParams struct {
-	Amount        int64  `json:"expense_amount" binding:"required"`
-	Description   string `json:"description"`
-	ExpenseTypeId string `json:"expense_type_id" binding:"required"`
-	AccountId     string `json:"account_id" binding:"required"`
+	Amount        float64 `json:"expense_amount" binding:"required"`
+	Description   string  `json:"description"`
+	ExpenseTypeId string  `json:"expense_type_id" binding:"required"`
+	AccountId     string  `json:"account_id" binding:"required"`
 }
 
 func (e Endpoints) ListExpenses(c *gin.Context) {

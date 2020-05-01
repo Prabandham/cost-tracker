@@ -11,10 +11,12 @@ import (
 )
 
 type AccountParams struct {
-	Name    string `json:"name" binding:"required"`
-	Address string `json:"address"`
-	Balance int64  `json:"balance" binding:"required,min=1"`
-	IFSC    string `json:"ifsc_code" binding:"required"`
+	Name             string  `json:"name" binding:"required"`
+	Address          string  `json:"address"`
+	Balance          float64 `json:"balance" binding:"required,min=1"`
+	IFSC             string  `json:"ifsc_code" binding:"required"`
+	GlobalThreshold  float64 `json:"global_threshold"`
+	MonthlyThreshold float64 `json:"monthly_threshold"`
 }
 
 func (e Endpoints) ListAccounts(c *gin.Context) {
@@ -38,7 +40,10 @@ func (e Endpoints) CreateAccount(c *gin.Context) {
 	account.Address = accountParams.Address
 	account.Balance = accountParams.Balance
 	account.IFSC = accountParams.IFSC
+	account.GlobalThreshold = accountParams.GlobalThreshold
+	account.MonthlyThreshold = accountParams.MonthlyThreshold
 	account.UserID = uid
+	fmt.Println(account)
 	e.Connection.FirstOrCreate(&account, account)
 	c.JSON(http.StatusOK, account)
 }

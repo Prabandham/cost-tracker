@@ -12,7 +12,7 @@ import (
 //
 type Income struct {
 	Base
-	Amount         int64     `sql:"index" json:"amount" gorm:"not null"`
+	Amount         float64   `sql:"index" json:"amount" gorm:"not null"`
 	ReceivedOn     time.Time `json:"received_on"`
 	UserID         uuid.UUID `sql:"index"`
 	User           User
