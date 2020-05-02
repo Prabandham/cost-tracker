@@ -43,7 +43,6 @@ func (e Endpoints) CreateAccount(c *gin.Context) {
 	account.GlobalThreshold = accountParams.GlobalThreshold
 	account.MonthlyThreshold = accountParams.MonthlyThreshold
 	account.UserID = uid
-	fmt.Println(account)
 	e.Connection.FirstOrCreate(&account, account)
 	c.JSON(http.StatusOK, account)
 }

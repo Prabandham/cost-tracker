@@ -2,6 +2,7 @@ package endpoints
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	uuid "github.com/satori/go.uuid"
@@ -14,6 +15,7 @@ type ExpenseParams struct {
 	Description   string  `json:"description"`
 	ExpenseTypeId string  `json:"expense_type_id" binding:"required"`
 	AccountId     string  `json:"account_id" binding:"required"`
+	SpentOn       string  `json:"spent_on" binding:"required"`
 }
 
 func (e Endpoints) ListExpenses(c *gin.Context) {
@@ -31,10 +33,12 @@ func (e Endpoints) CreateExpense(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": FormatErrors(err)})
 		return
 	}
+	t, _ := time.Parse(time.RFC3339, expenseParams.SpentOn)
 	expense.UserID = uid
 	expense.AccountID, _ = uuid.FromString(expenseParams.AccountId)
 	expense.ExpenseTypeID, _ = uuid.FromString(expenseParams.ExpenseTypeId)
 	expense.Amount = expenseParams.Amount
+	expense.SpentOn = t
 	expense.Description = expenseParams.Description
 	e.Connection.FirstOrCreate(&expense, expense)
 	e.Connection.Where("ID = ?", expense.ID).Preload("Account").Preload("ExpenseType").First(&expense)
