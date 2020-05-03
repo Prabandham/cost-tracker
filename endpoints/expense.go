@@ -21,7 +21,7 @@ type ExpenseParams struct {
 func (e Endpoints) ListExpenses(c *gin.Context) {
 	expenses := []Expense{}
 	uid, _ := uuid.FromString(c.Param("user_id"))
-	e.Connection.Where("user_id = ?", uid).Preload("Account").Preload("ExpenseType").Find(&expenses)
+	e.Connection.Order("spent_on desc").Where("user_id = ?", uid).Preload("Account").Preload("ExpenseType").Find(&expenses)
 	c.JSON(http.StatusOK, expenses)
 }
 

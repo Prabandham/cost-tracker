@@ -20,7 +20,7 @@ type IncomeParams struct {
 func (e Endpoints) ListIncomes(c *gin.Context) {
 	incomes := []Income{}
 	uid, _ := uuid.FromString(c.Param("user_id"))
-	e.Connection.Where("user_id = ?", uid).Preload("Account").Preload("IncomeSource").Find(&incomes)
+	e.Connection.Order("received_on desc").Where("user_id = ?", uid).Preload("Account").Preload("IncomeSource").Find(&incomes)
 	c.JSON(http.StatusOK, incomes)
 }
 

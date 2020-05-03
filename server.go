@@ -93,7 +93,7 @@ func loadRoutes(server *gin.Engine, db *db.Db, authMiddleware *jwt.GinJWTMiddlew
 		auth.GET("/find_user", endpoints.FindUserByEmail)
 		auth.GET("/validate_session", endpoints.ValidateSession)
 
-		// IncomeSources
+		// Income Sources
 		auth.GET("/income_sources/:user_id", endpoints.ListIncomeSources)
 		auth.POST("/income_source/:user_id", endpoints.AddIncomeSource)
 
@@ -108,5 +108,9 @@ func loadRoutes(server *gin.Engine, db *db.Db, authMiddleware *jwt.GinJWTMiddlew
 		// Expenses
 		auth.GET("/expenses/:user_id", endpoints.ListExpenses)
 		auth.POST("/expense/:user_id", endpoints.CreateExpense)
+
+		// Analytics
+		auth.GET("/analytics/expense_for_month/:user_id", endpoints.GetExpensesForMonth)
+		auth.GET("/analytics/expenses_summary/:user_id", endpoints.GetExpensesGrouped)
 	}
 }
