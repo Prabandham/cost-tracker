@@ -109,6 +109,10 @@ func loadRoutes(server *gin.Engine, db *db.Db, authMiddleware *jwt.GinJWTMiddlew
 		auth.GET("/expenses/:user_id", endpoints.ListExpenses)
 		auth.POST("/expense/:user_id", endpoints.CreateExpense)
 
+		// Summary
+		auth.GET("/income_expense_summary/:user_id", endpoints.ListIncomeAndExpenseSummary)
+		auth.GET("/income_expense_details/:user_id/:month", endpoints.ListIncomeAndExpenseDetails)
+
 		// Analytics
 		auth.GET("/analytics/expense_for_month/:user_id", endpoints.GetExpensesForMonth)
 		auth.GET("/analytics/expenses_summary/:user_id", endpoints.GetExpensesGrouped)

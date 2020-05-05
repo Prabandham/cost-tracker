@@ -2,6 +2,7 @@ package objects
 
 import (
 	"errors"
+	"fmt"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -21,6 +22,7 @@ type User struct {
 	IncomeSoruces        []IncomeSource
 	Incomes              []Income
 	Accounts             []Account
+	Expenses             []Expense
 }
 
 func (user *User) BeforeSave(scope *gorm.Scope) error {
@@ -64,4 +66,38 @@ func (user *User) IsValidSession(tokenString string) error {
 	} else {
 		return errors.New(err.Error())
 	}
+}
+
+func (user *User) GetIncomeAndExpenseSummary(db *gorm.DB, user_id string) []map[string]string {
+	results := make([]map[string]string, 0)
+	queryString := `
+	select q1.*, q2."received" from (select to_char(ex.spent_on,'Mon') as Month,
+		extract(year from ex.spent_on) as Year,
+		sum(ex.amount) as "spent"
+		from expenses as ex
+		where ex.user_id = ?
+	group by 1,2) as q1,
+	(select to_char(ex.received_on,'Mon') as Month,
+		   extract(year from ex.received_on) as Year,
+		   sum(ex.amount) as "received"
+	from incomes as ex
+	where ex.user_id = ?
+	group by 1,2) as q2
+	`
+
+	rows, err := db.Raw(queryString, user_id, user_id).Rows()
+	defer rows.Close()
+
+	if err != nil {
+		fmt.Println(err)
+	}
+	for rows.Next() {
+		var month, year, income, expense string
+		rows.Scan(&month, &year, &expense, &income)
+		result := map[string]string{"month": month, "year": year, "expense": expense, "income": income}
+		fmt.Println(result)
+		results = append(results, result)
+	}
+
+	return results
 }
