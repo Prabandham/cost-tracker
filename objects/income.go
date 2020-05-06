@@ -12,14 +12,15 @@ import (
 //
 type Income struct {
 	Base
-	Amount         float64   `sql:"index" json:"amount" gorm:"not null"`
-	ReceivedOn     time.Time `json:"received_on"`
-	UserID         uuid.UUID `sql:"index"`
-	User           User
-	IncomeSourceID uuid.UUID `sql:"index" json:"income_source_id`
-	IncomeSource   IncomeSource
-	AccountID      uuid.UUID `sql:"index" json:"account_id"`
 	Account        Account
+	AccountID      uuid.UUID `sql:"index" json:"account_id"`
+	Amount         float64   `sql:"index" json:"amount" gorm:"not null"`
+	Description    string    `gorm:"size: 255"`
+	IncomeSource   IncomeSource
+	IncomeSourceID uuid.UUID `sql:"index" json:"income_source_id`
+	ReceivedOn     time.Time `json:"received_on"`
+	User           User
+	UserID         uuid.UUID `sql:"index"`
 }
 
 func (income *Income) BeforeCreate(scope *gorm.Scope) (err error) {

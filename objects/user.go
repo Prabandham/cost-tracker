@@ -14,15 +14,15 @@ const SigningKey string = "d74fb44d-1964-45ca-96de-a5edd74df6e8"
 
 type User struct {
 	Base
-	Name                 string `sql:"index" json:"name" gorm:"not null" binding:"required"`
+	Accounts             []Account
 	Email                string `sql:"index" json:"email" gorm:"unique;not null" binding:"required,email"`
-	Password             string `json:"password" gorm:"-" binding:"required,min=8,max=16"`
-	PasswordConformation string `gorm:"-" json:"password_conformation" binding:"required,min=8,max=16,eqfield=Password"`
 	EncryptedPassword    string `json:"-"`
+	Expenses             []Expense
 	IncomeSoruces        []IncomeSource
 	Incomes              []Income
-	Accounts             []Account
-	Expenses             []Expense
+	Name                 string `sql:"index" json:"name" gorm:"not null" binding:"required"`
+	Password             string `json:"password" gorm:"-" binding:"required,min=8,max=16"`
+	PasswordConformation string `gorm:"-" json:"password_conformation" binding:"required,min=8,max=16,eqfield=Password"`
 }
 
 func (user *User) BeforeSave(scope *gorm.Scope) error {

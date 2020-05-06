@@ -13,8 +13,9 @@ import (
 type IncomeParams struct {
 	AccountId      string  `json:"account_id" binding:"required"`
 	Amount         float64 `json:"amount" binding:"required"`
-	ReceivedOn     string  `json:"received_on" binding:"required"`
+	Description    string  `json:"description"`
 	IncomeSourceId string  `json:"income_source_id" binding:"required"`
+	ReceivedOn     string  `json:"received_on" binding:"required"`
 }
 
 func (e Endpoints) ListIncomes(c *gin.Context) {
@@ -37,6 +38,7 @@ func (e Endpoints) CreateIncome(c *gin.Context) {
 	income.AccountID, _ = uuid.FromString(incomeParams.AccountId)
 	income.Amount = incomeParams.Amount
 	income.IncomeSourceID, _ = uuid.FromString(incomeParams.IncomeSourceId)
+	income.Description = incomeParams.Description
 	income.ReceivedOn = t
 	e.Connection.FirstOrCreate(&income, income)
 	e.Connection.Where("ID = ?", income.ID).Preload("Account").Preload("IncomeSource").First(&income)

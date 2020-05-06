@@ -11,15 +11,15 @@ import (
 // Expense is the actual expense incured by the person, which papps to the ExpenseType
 type Expense struct {
 	Base
-	Amount        float64   `json:"amount" gorm:"not null"`
-	SpentOn       time.Time `json:"spent_on"`
-	Description   string    `gorm:"size: 255"`
-	UserID        uuid.UUID `sql:"index" gorm:"not null`
-	User          User
-	ExpenseTypeID uuid.UUID `sql:"index gorm:"not null`
-	ExpenseType   ExpenseType
-	AccountID     uuid.UUID `sql:"index"`
 	Account       Account
+	AccountID     uuid.UUID `sql:"index"`
+	Amount        float64   `json:"amount" gorm:"not null"`
+	Description   string    `gorm:"size: 255"`
+	ExpenseType   ExpenseType
+	ExpenseTypeID uuid.UUID `sql:"index gorm:"not null`
+	SpentOn       time.Time `json:"spent_on"`
+	User          User
+	UserID        uuid.UUID `sql:"index" gorm:"not null`
 }
 
 func (expense *Expense) BeforeCreate(scope *gorm.Scope) (err error) {
