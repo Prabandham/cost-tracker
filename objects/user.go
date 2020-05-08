@@ -68,36 +68,19 @@ func (user *User) IsValidSession(tokenString string) error {
 	}
 }
 
-func (user *User) GetIncomeAndExpenseSummary(db *gorm.DB, user_id string) []map[string]string {
+func (user *User) GetIncomeAndExpenseSummary(db *gorm.DB, user_id string, year string) []map[string]string {
 	results := make([]map[string]string, 0)
-	queryString := `
-	select q1.*, q2."received" from (select to_char(ex.spent_on,'Mon') as Month,
-		extract(year from ex.spent_on) as Year,
-		sum(ex.amount) as "spent"
-		from expenses as ex
-		where ex.user_id = ?
-	group by 1,2) as q1,
-	(select to_char(ex.received_on,'Mon') as Month,
-		   extract(year from ex.received_on) as Year,
-		   sum(ex.amount) as "received"
-	from incomes as ex
-	where ex.user_id = ?
-	group by 1,2) as q2
-	`
-
-	rows, err := db.Raw(queryString, user_id, user_id).Rows()
-	defer rows.Close()
-
-	if err != nil {
-		fmt.Println(err)
-	}
-	for rows.Next() {
-		var month, year, income, expense string
-		rows.Scan(&month, &year, &expense, &income)
+	months := [12]string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
+	for _, month := range months {
+		var income, expense string
+		expenseRow := db.Table("expenses").Where("user_id = ?", user_id).Where("to_char(spent_on, 'Mon') = ?", month).Where("extract(year from spent_on) = ?", year).Select("sum(amount)").Row()
+		expenseRow.Scan(&expense)
+		incomeRow := db.Table("incomes").Where("user_id = ?", user_id).Where("to_char(received_on, 'Mon') = ?", month).Where("extract(year from received_on) = ?", year).Select("sum(amount)").Row()
+		incomeRow.Scan(&income)
 		result := map[string]string{"month": month, "year": year, "expense": expense, "income": income}
-		fmt.Println(result)
 		results = append(results, result)
-	}
+    }
 
+	fmt.Println(results)
 	return results
 }

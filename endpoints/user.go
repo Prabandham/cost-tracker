@@ -99,13 +99,15 @@ func (e Endpoints) ValidateSession(c *gin.Context) {
 func (e Endpoints) ListIncomeAndExpenseSummary(c *gin.Context) {
 	uid := c.Param("user_id")
 	user := User{}
-	result := user.GetIncomeAndExpenseSummary(e.Connection, uid)
+	year := c.Param("year")
+	result := user.GetIncomeAndExpenseSummary(e.Connection, uid, year)
 	c.JSON(http.StatusOK, result)
 }
 
 func (e Endpoints) ListIncomeAndExpenseDetails(c *gin.Context) {
 	user_id := c.Param("user_id")
 	month := c.Param("month")
+	// year := c.Param("year")
 	expenses := []Expense{}
 	incomes := []Income{}
 	e.Connection.Order("spent_on desc").Where("user_id = ? and date_part('month', spent_on) = ?", user_id, month).Preload("Account").Preload("ExpenseType").Find(&expenses)
